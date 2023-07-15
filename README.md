@@ -28,6 +28,8 @@ The users will be able to see the list of concerts they have attended, created, 
   * [Flow Chart](#flow-chart)
   * [Database Schema](#database-schema) 
 
+* [Agile Development Process](#agile-development-process)
+
 * [Features](#features)
 
 * [Technologies Used](#technologies-used)
@@ -70,6 +72,12 @@ ___
 ### Flow Chart
 
 ### Database Schema
+
+---
+
+## Agile Development Process
+
+Please check the [AGILE.md](AGILE.md) file to see all the Agile Development Process.
 
 ---
 

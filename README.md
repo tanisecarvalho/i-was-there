@@ -69,6 +69,97 @@ ___
 
 ### Wireframes
 
+All the wireframes were created using [Balsamiq](https://balsamiq.com/).
+
+<details>
+  <summary>Index</summary>
+
+  <br>
+
+  ![Index](docs/wireframes/index.png)
+
+</details>
+
+<details>
+  <summary>Signup</summary>
+
+  <br>
+
+  ![Signup](docs/wireframes/signup.png)
+
+</details>
+
+<details>
+  <summary>Login</summary>
+
+  <br>
+
+  ![Login](docs/wireframes/login.png)
+
+</details>
+
+<details>
+  <summary>Logout</summary>
+
+  <br>
+
+  ![Logout](docs/wireframes/logout.png)
+
+</details>
+
+<details>
+  <summary>Home</summary>
+
+  <br>
+
+  ![Home](docs/wireframes/home.png)
+
+</details>
+
+<details>
+  <summary>Profile</summary>
+
+  <br>
+
+  ![Profile](docs/wireframes/profile.png)
+
+</details>
+
+<details>
+  <summary>Concerts</summary>
+
+  <br>
+
+  * My Concerts
+  ![My Concerts](docs/wireframes/my_concerts.png)
+
+  <br>
+
+  * Add Concert
+  ![Add Concert](docs/wireframes/add_concert.png)
+
+  <br>
+
+  * Add To My List
+  ![Add To My List](docs/wireframes/add_to_my_list.png)
+
+  <br>
+
+  * Edit Concert
+  ![Edit Concert](docs/wireframes/edit_concert.png)
+
+  <br>
+
+  * Delete Concert
+  ![Delete Concert](docs/wireframes/delete_concert.png)
+
+  <br>
+
+  * View Concert
+  ![View Concert](docs/wireframes/view_concert.png)
+
+</details>
+
 ### Flow Chart
 
 ### Database Schema

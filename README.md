@@ -162,6 +162,17 @@ All the wireframes were created using [Balsamiq](https://balsamiq.com/).
 
 ### Flow Chart
 
+The flow chart was created using [Draw.io](https://draw.io/).
+
+<details>
+  <summary>Flow Chart</summary>
+
+  <br>
+
+  ![Flow Chart](docs/flow.png)
+
+</details>
+
 ### Database Schema
 
 ---

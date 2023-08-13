@@ -241,6 +241,8 @@ If you would like to edit your copy of this repository on Gitpod, you will need 
 ## Credits
 
 ### Code Used
+
+- Used [RandomKeyGen](https://randomkeygen.com/) to create the SECRET_KEY for the project.
  
 ### Acknowledgments
 

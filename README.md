@@ -1,6 +1,6 @@
 # I Was There
 
-### Deployed Site: [I Was There](#)
+### Deployed Site: [I Was There](https://i-was-there-d5ba14a8429f.herokuapp.com/)
 
 ![Preview](placement for preview image)
 
@@ -243,6 +243,7 @@ If you would like to edit your copy of this repository on Gitpod, you will need 
 ### Code Used
 
 - Used [RandomKeyGen](https://randomkeygen.com/) to create the SECRET_KEY for the project.
+- Used [FreeCodeCamp](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/) article to learn how to set up a virtual environment in Python.
  
 ### Acknowledgments
 

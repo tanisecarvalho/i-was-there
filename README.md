@@ -63,9 +63,35 @@ ___
 
 ### Colour Scheme
 
+The palette was defined using [Color Hunt](https://colorhunt.co/palette/2d033b810ca8c147e9e5b8f4). I knew I wanted to use purple and black as the two main colours.
+
+When I searched on the website for palettes with both colours, this one got my attention straightway.
+
+- #2D033B
+- #810CA8
+- #C147E9
+- #E5B8F4
+
+![Colour Palette](docs/colour_palette.png)
+
 ### Typography
 
+Google Fonts was used to select and import the fonts on this project.
+
+For the logo and headings, the font is Quicksand.
+![Quicksand](docs/quicksand_1.JPG)
+![Quicksand Bold](docs/quicksand_2.JPG)
+
+For the body and forms, the font is Oxygen.
+![Oxygen](docs/oxygen.JPG)
+
 ### Imagery
+
+The logo was created using [Canva](https://www.canva.com/). The idea came from mixing a pin location map and musical notes.
+
+- Logo
+
+![Logo](docs/logo.png)
 
 ### Wireframes
 

@@ -4,21 +4,34 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="col-12 mt-3 left">
+            <nav class="navbar text-bg-dark">
+                <div class="container-fluid">
+                  <form class="d-flex" role="search">
+                    <label for="band" class="col-sm-2 col-form-label">Band: </label>
+                    <input class="form-control me-2" type="search" aria-label="Band" name="band">
+                    <label for="country" class="col-sm-2 col-form-label">Country: </label>
+                    <input class="form-control me-2" type="search" aria-label="Country" name="country">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+        </div>
+    </div>
+    <div class="row">
 
-        <!-- Blog Entries Column -->
+        <!-- Concerts -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for concert in concert_list %}
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
                         <div class="card-body">
-                            <a href="#" class="concert-link">
-                                <h2 class="card-title">{{ concert.band }}</h2>
-                                <p class="card-text">{{ concert.date }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ concert.created_on}} <i class="far fa-heart"></i>
-                                {{ concert.number_of_goers }}</p>
+                            <h4 class="card-title"><a href="#" class="card-link">{{ concert.band }}</a></h4>
+                            <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
+                            <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
+                            <p class="card-text">{{ concert.number_of_goers }} were there</p>
+                            <input type="button" value="ADD TO MY LIST">
                         </div>
                     </div>
                 </div>
@@ -27,7 +40,6 @@
             <div class="row">
                 {% endif %}
                 {% endfor %}
-
             </div>
         </div>
     </div>

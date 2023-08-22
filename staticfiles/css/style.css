@@ -16,3 +16,25 @@ nav {
 footer {
     background-color: #810CA8;
 }
+
+#gallery .carousel-item img {
+  height: 80vh;
+  width: 100%;
+  object-fit: contain;
+  object-position: center center;
+  overflow: hidden;
+}
+
+#gallery .carousel-item:before {
+    content: "";
+    background-image: 
+        linear-gradient(
+            to bottom,
+            transparent, rgba(0,0,0,0.5)
+        );
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}

@@ -27,7 +27,7 @@
                 <div class="col-md-4">
                     <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="#" class="card-link">{{ concert.band }}</a></h4>
+                            <h4 class="card-title"><a href="{% url 'concert_detail' concert.slug %}" class="card-link">{{ concert.band }}</a></h4>
                             <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
                             <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                             <p class="card-text">{{ concert.number_of_goers }} were there</p>

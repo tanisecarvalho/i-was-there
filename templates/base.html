@@ -21,7 +21,7 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="I Was There" width="80">
@@ -53,9 +53,11 @@
     </nav>
 
     <main class="flex-shrink-0 main-bg">
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
+        <div class="container">
+            {% block content %}
+            <!-- Content Goes here -->
+            {% endblock content %}
+        </div>
     </main>
 
     <footer class="footer mt-auto py-3">

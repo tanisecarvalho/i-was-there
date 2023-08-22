@@ -1,40 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="masthead">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6 masthead-text">
-                <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">
-                    {{ concert.band }}
-                </h1>
-                <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle"> {{ concert.date }} </p>
-            </div>
-        </div>
-    </div>
-</div>
+<h1>VIEW CONCERT</h1>
 
-<div class="container">
     <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text "></p>
-                <div class="row">
-
-                    <div class="col-1">
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> </strong>
-                    </div>
-                    <div class="col-1">
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
-                        </strong>
-                        {% endwith %}
-                    </div>
+        <div class="col view-concert mt-3">
+            <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="{% url 'concert_detail' concert.slug %}" class="card-link">{{ concert.band }}</a></h4>
+                    <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
+                    <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
+                    <p class="card-text">{{ concert.number_of_goers }} were there</p>
+                    <input type="button" value="ADD TO MY LIST">
                 </div>
             </div>
         </div>
@@ -44,9 +20,10 @@
             <hr>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+    <div class="row view-concert">
+        <h3>Comments:</h3>
+        <div class="col-md-8 text-bg-dark card mb-4 mt-3 concert-comments">
+            
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for comment in comments %}
@@ -74,7 +51,11 @@
             <div class="carousel-inner">
                 {% for comment in comments %}
                 {% if "placeholder" not in comment.photo.url %}
-              <div class="carousel-item active">
+                    {% if forloop.counter is 1 %}
+                        <div class="carousel-item active">
+                    {% else %}
+                        <div class="carousel-item">
+                    {% endif %}
                 <img src=" {{ comment.photo.url }} " class="d-block" alt="Concert photo by {{ comment.user }} ">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Photo taken by {{ comment.user }} </h5>
@@ -95,7 +76,5 @@
         
     <!-- </div> -->
 
-    
-</div>
 
 {% endblock content %}

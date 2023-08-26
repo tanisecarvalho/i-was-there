@@ -18,7 +18,7 @@ class Band(models.Model):
 class Concert(models.Model):
     band = models.ForeignKey(Band, on_delete=models.CASCADE, related_name="concerts_bands")
     date = models.DateField()
-    country = models.CharField(max_length=200, unique=True)
+    country = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="concerts")
     created_on = models.DateTimeField(auto_now_add=True)

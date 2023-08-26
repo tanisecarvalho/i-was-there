@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
-from .models import Concert
-from .forms import CommentForm
+from .models import Concert, Band
+from .forms import CommentForm, ConcertForm, BandForm
 
 
 class ConcertList(generic.ListView):
@@ -59,7 +59,68 @@ class AddToMyList(View):
             comment = comment_form.save(commit=False)
             comment.concert = concert
             comment.save()
+            concert.goers.add(request.user)
         else:
             comment_form = CommentForm()
 
         return redirect("concert_detail", slug=concert.slug)
+
+
+class AddConcert(View):
+
+    def get(self, request, *args, **kwargs):
+
+        return render(
+            request,
+            "add_concert.html",
+            {
+                "band_form": BandForm(),
+                "concert_form": ConcertForm(),
+                "comment_form": CommentForm()
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+
+        band_form = BandForm(data=request.POST)
+        concert_form = ConcertForm(data=request.POST)
+        comment_form = CommentForm(data=request.POST, files=request.FILES)
+
+        query_band = Band.objects.filter(name=request.POST['name'])
+
+        if query_band.exists():
+            band = get_object_or_404(query_band)
+        else:
+            if band_form.is_valid():
+                band_form.instance.user = request.user
+                band = band_form.save()
+
+        if concert_form.is_valid():
+            concert_form.instance.user = request.user
+            concert = concert_form.save(commit=False)
+            concert.band = band
+            print(band)
+            concert.save()
+
+            if comment_form.is_valid():
+                comment_form.instance.user = request.user
+                comment = comment_form.save(commit=False)
+                comment.concert = concert
+                comment.save()
+                concert.goers.add(request.user)
+
+                return redirect("concert_detail", slug=concert.slug)
+        else:
+            band_form = BandForm()
+            concert_form = ConcertForm()
+            comment_form = CommentForm()
+
+            return render(
+                request,
+                "add_concert.html",
+                {
+                    "band_form": BandForm(),
+                    "concert_form": ConcertForm(),
+                    "comment_form": CommentForm()
+                },
+            )

@@ -6,11 +6,10 @@
         <div class="col view-concert mt-3">
             <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'concert_detail' concert.slug %}" class="card-link">{{ concert.band }}</a></h4>
+                    <h4 class="card-title">{{ concert.band }}</h4>
                     <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
                     <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                     <p class="card-text">{{ concert.number_of_goers }} were there</p>
-                    <input type="button" value="ADD TO MY LIST">
                 </div>
             </div>
         </div>
@@ -22,35 +21,35 @@
     </div>
     <div class="row view-concert">
         <h3>Comments:</h3>
-        <div class="col-md-8 text-bg-dark card mb-4 mt-3 concert-comments">
+        
             
-            <div class="card-body">
+            
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for comment in comments %}
+                <div class="col-md-8 text-bg-dark card mb-4 mt-3 concert-comments">
+                <div class="card-body">
                 <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
                         <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.user }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                        </span> wrote:
-                        {{ comment.sentence }}
+                        {{ comment.user }} wrote:
                     </p>
                     <!-- The body of the comment goes before the | -->
-                    {{ comment.sentence | linebreaks }}
+                    {{ comment.sentence | safe }}
                 </div>
                 <!-- Our for loop ends here -->
-                {% endfor %}
             </div>
         </div>
+                {% endfor %}
+            
+        
     </div>
+    
     <h3 class="text-center">Gallery</h3>
     <!-- <div class="row"> -->
         
         <div id="gallery" class="carousel slide" data-bs-ride="false">
             <div class="carousel-inner">
-                {% for comment in comments %}
-                {% if "placeholder" not in comment.photo.url %}
+                {% for comment in photos %}
                     {% if forloop.counter is 1 %}
                         <div class="carousel-item active">
                     {% else %}
@@ -61,7 +60,6 @@
                   <h5>Photo taken by {{ comment.user }} </h5>
                 </div>
               </div>
-              {% endif %}
             {% endfor %}
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#gallery" data-bs-slide="prev">
@@ -73,6 +71,7 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
+        </div>
         
     <!-- </div> -->
 

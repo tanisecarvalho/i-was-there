@@ -32,7 +32,7 @@
                             <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
                             <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                             <p class="card-text">{{ concert.number_of_goers }} were there</p>
-                            <input type="button" value="ADD TO MY LIST">
+                            <a href="{% url 'add_to_my_list' concert.slug %}" ><input type="button" value="ADD TO MY LIST"></a>
                         </div>
                     </div>
                 </div>

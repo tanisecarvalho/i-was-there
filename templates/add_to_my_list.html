@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load crispy_forms_tags %}
+
+<h1>ADD TO MY LIST</h1>
+
+    <div class="row">
+        <div class="col view-concert mt-3">
+            <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
+                <div class="card-body">
+                    <h4 class="card-title">{{ concert.band }}</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
+                    <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
+                    <p class="card-text">{{ concert.number_of_goers }} were there</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col view-concert  mt-3 ">
+            <div class="card text-bg-dark">
+                <div class="card-body">
+                    <!-- For later -->
+                    <!-- {% if commented %} -->
+                    <div class="alert alert-success" role="alert">
+                        Your comment is awaiting approval
+                    </div>
+                    <!-- {% else %} -->
+                    <!-- {% if user.is_authenticated %} -->
+
+                    <h3>Leave a comment:</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;" enctype="multipart/form-data">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button class="btn btn-signup btn-lg" type="submit">Submit</button>
+                    </form>
+                    
+                    <!-- {% endif %} -->
+                    <!-- {% endif %} -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

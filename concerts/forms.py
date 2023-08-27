@@ -19,4 +19,4 @@ class BandForm(forms.ModelForm):
     class Meta:
         model = Band
         fields = ('name', )
-        labels = {'name': 'Band', } 
+        labels = {'name': 'Band', }

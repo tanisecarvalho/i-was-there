@@ -9,6 +9,29 @@ class ConcertList(generic.ListView):
     queryset = Concert.objects.order_by('-created_on')
     template_name = 'concerts.html'
     paginate_by = 6
+    context_object_name = "concerts"
+
+    def get_queryset(self, **kwargs):
+        band = self.request.GET.get('band')
+        country = self.request.GET.get('country')
+
+        if band and country:
+            concerts = concerts = self.model.objects.filter(
+                    band__in=Band.objects.filter(name__icontains=band),
+                    country__icontains=country
+                )
+        elif band or country:
+            if band:
+                concerts = self.model.objects.filter(
+                    band__in=Band.objects.filter(name__icontains=band)
+                )
+            if country:
+                concerts = self.model.objects.filter(
+                    country__icontains=country
+                )
+        else:
+            concerts = self.model.objects.all()
+        return concerts
 
 
 class ConcertDetail(View):

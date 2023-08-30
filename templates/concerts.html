@@ -33,6 +33,7 @@
                             <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                             <p class="card-text">{{ concert.number_of_goers }} were there</p>
                             <a href="{% url 'add_to_my_list' concert.slug %}" ><input type="button" value="ADD TO MY LIST"></a>
+                            <a href="{% url 'edit_concert' concert.slug %}" ><input type="button" value="EDIT"></a>
                         </div>
                     </div>
                 </div>

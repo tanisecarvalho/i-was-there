@@ -147,3 +147,72 @@ class AddConcert(View):
                     "comment_form": CommentForm()
                 },
             )
+
+
+class MyConcertList(View):
+    def get(self, request, *args, **kwargs):
+        concerts = Concert.objects.filter(goers=self.request.user.id)       
+        return render(
+            request,
+            "concerts.html",
+            {
+                "concerts": concerts
+            },
+        )
+
+
+class EditConcert(View):
+
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Concert.objects
+        concert = get_object_or_404(queryset, slug=slug)
+
+        if concert.user == request.user:
+            band_form = BandForm(instance=concert.band)
+            concert_form = ConcertForm(instance=concert)
+
+            return render(
+                request,
+                "edit_concert.html",
+                {
+                    "band_form": band_form,
+                    "concert_form": concert_form
+                },
+            )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Concert.objects
+        concert = get_object_or_404(queryset, slug=slug)
+
+        band_form = BandForm(data=request.POST)
+        concert_form = ConcertForm(data=request.POST, instance=concert)
+
+        query_band = Band.objects.filter(name=request.POST['name'])
+
+        if query_band.exists():
+            band = get_object_or_404(query_band)
+        else:
+            if band_form.is_valid():
+                band_form.instance.user = request.user
+                band = band_form.save()
+
+        if concert_form.is_valid():
+            concert_form.instance.band = band
+            concert_form.save()
+
+            return redirect("concert_detail", slug=concert.slug)
+        else:
+            band_form = BandForm(instance=concert.band)
+            concert_form = ConcertForm(instance=concert)
+
+            return render(
+                request,
+                "edit_concert.html",
+                {
+                    "band_form": band_form,
+                    "concert_form": concert_form,
+                },
+            )
+

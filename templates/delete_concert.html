@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>DELETE CONCERT</h1>
+
+    <div class="row">
+        <div class="col-12 mt-3 left">
+            <nav class="navbar text-bg-dark">
+                <div class="container-fluid">
+                    <form class="d-flex" method="post">
+                        {% csrf_token %}
+                        <h2>Are you sure you want to delete the concert?</h2>
+                        <button class="btn btn-outline-success" type="submit">Confirm</button>
+                    </form>
+                </div>
+              </nav>
+        </div>
+    </div>
+{%endblock%}

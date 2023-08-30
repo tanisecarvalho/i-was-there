@@ -216,3 +216,24 @@ class EditConcert(View):
                 },
             )
 
+
+class DeleteConcert(View):
+    def get(self, request, slug, *args, **kwargs):
+
+        queryset = Concert.objects
+        concert = get_object_or_404(queryset, slug=slug)
+
+        if concert.user == request.user:
+
+            return render(
+                request,
+                "delete_concert.html"
+            )
+
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Concert.objects
+        concert = get_object_or_404(queryset, slug=slug)
+
+        concert.delete()
+        return redirect('home')

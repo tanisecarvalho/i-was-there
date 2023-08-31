@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Concert, Band
 from .forms import CommentForm, ConcertForm, BandForm
 
@@ -34,7 +35,7 @@ class ConcertList(generic.ListView):
         return concerts
 
 
-class ConcertDetail(View):
+class ConcertDetail(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
@@ -56,7 +57,7 @@ class ConcertDetail(View):
         )
 
 
-class AddToMyList(View):
+class AddToMyList(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
@@ -89,7 +90,7 @@ class AddToMyList(View):
         return redirect("concert_detail", slug=concert.slug)
 
 
-class AddConcert(View):
+class AddConcert(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
 
@@ -149,7 +150,7 @@ class AddConcert(View):
             )
 
 
-class MyConcertList(View):
+class MyConcertList(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         concerts = Concert.objects.filter(goers=self.request.user.id)       
         return render(
@@ -161,7 +162,7 @@ class MyConcertList(View):
         )
 
 
-class EditConcert(View):
+class EditConcert(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
 
@@ -217,7 +218,7 @@ class EditConcert(View):
             )
 
 
-class DeleteConcert(View):
+class DeleteConcert(LoginRequiredMixin, View):
     def get(self, request, slug, *args, **kwargs):
 
         queryset = Concert.objects

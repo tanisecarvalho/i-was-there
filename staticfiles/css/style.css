@@ -5,8 +5,9 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
-h1 h2 h3 {
+h1, h2, h3 {
     font-family: 'Quicksand', sans-serif;
+    text-align: center;
 }
 
 nav {
@@ -38,3 +39,24 @@ footer {
     width: 100vw;
     height: 100vh;
 }
+
+.view-concert {
+    display: flex;
+    justify-content: center;
+}
+
+.concert-comments {
+    padding: 10px;
+}
+
+.form-login input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-login input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }

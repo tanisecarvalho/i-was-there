@@ -7,7 +7,9 @@
 
 {% block content %}
 
-<h1>{% trans "Sign In" %}</h1>
+<div class="row text-center">
+  <div class="col mt-3 form-login">
+    <h1>{% trans "Sign In" %}</h1>
 
 <p>{% blocktrans %}If you have not created an account yet, then please
 <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
@@ -20,5 +22,9 @@
   {% endif %}
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
 </form>
+  </div>
+</div>
+
+
 
 {% endblock %}

@@ -28,13 +28,13 @@
                 <div class="col-md-4">
                     <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="{% url 'concert_detail' concert.slug %}" class="card-link">{{ concert.band }}</a></h4>
+                            <h4 class="card-title"><a href="{% url 'concert_detail' concert.pk %}" class="card-link">{{ concert.band }}</a></h4>
                             <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
                             <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                             <p class="card-text">{{ concert.number_of_goers }} were there</p>
-                            <a href="{% url 'add_to_my_list' concert.slug %}" ><input type="button" value="ADD TO MY LIST"></a>
-                            <a href="{% url 'edit_concert' concert.slug %}" ><input type="button" value="EDIT"></a>
-                            <a href="{% url 'delete_concert' concert.slug %}" ><input type="button" value="DELETE"></a>
+                            <a href="{% url 'add_to_my_list' concert.pk %}" ><input type="button" value="ADD TO MY LIST"></a>
+                            <a href="{% url 'edit_concert' concert.pk %}" ><input type="button" value="EDIT"></a>
+                            <a href="{% url 'delete_concert' concert.pk %}" ><input type="button" value="DELETE"></a>
                         </div>
                     </div>
                 </div>

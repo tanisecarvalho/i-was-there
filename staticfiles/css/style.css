@@ -60,3 +60,12 @@ footer {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+.nav-link {
+    color: white;
+}
+
+.navbar-nav .nav-link.active {
+    color: white;
+    text-decoration: underline;
+}

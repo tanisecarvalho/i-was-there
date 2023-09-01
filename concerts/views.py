@@ -39,7 +39,7 @@ class ConcertDetail(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
         comments = concert.comments.order_by('-created_on')
         photos = []
         for comment in comments:
@@ -61,7 +61,7 @@ class AddToMyList(LoginRequiredMixin, View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
 
         return render(
             request,
@@ -74,7 +74,7 @@ class AddToMyList(LoginRequiredMixin, View):
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
 
         comment_form = CommentForm(data=request.POST, files=request.FILES)
 
@@ -87,7 +87,7 @@ class AddToMyList(LoginRequiredMixin, View):
         else:
             comment_form = CommentForm()
 
-        return redirect("concert_detail", slug=concert.slug)
+        return redirect("concert_detail", slug=concert.pk)
 
 
 class AddConcert(LoginRequiredMixin, View):
@@ -133,7 +133,7 @@ class AddConcert(LoginRequiredMixin, View):
                 comment.save()
                 concert.goers.add(request.user)
 
-                return redirect("concert_detail", slug=concert.slug)
+                return redirect("concert_detail", slug=concert.pk)
         else:
             band_form = BandForm()
             concert_form = ConcertForm()
@@ -152,7 +152,7 @@ class AddConcert(LoginRequiredMixin, View):
 
 class MyConcertList(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        concerts = Concert.objects.filter(goers=self.request.user.id)       
+        concerts = Concert.objects.filter(goers=self.request.user.id)
         return render(
             request,
             "concerts.html",
@@ -167,7 +167,7 @@ class EditConcert(LoginRequiredMixin, View):
     def get(self, request, slug, *args, **kwargs):
 
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
 
         if concert.user == request.user:
             band_form = BandForm(instance=concert.band)
@@ -185,7 +185,7 @@ class EditConcert(LoginRequiredMixin, View):
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
 
         band_form = BandForm(data=request.POST)
         concert_form = ConcertForm(data=request.POST, instance=concert)
@@ -203,7 +203,7 @@ class EditConcert(LoginRequiredMixin, View):
             concert_form.instance.band = band
             concert_form.save()
 
-            return redirect("concert_detail", slug=concert.slug)
+            return redirect("concert_detail", slug=concert.pk)
         else:
             band_form = BandForm(instance=concert.band)
             concert_form = ConcertForm(instance=concert)
@@ -222,7 +222,7 @@ class DeleteConcert(LoginRequiredMixin, View):
     def get(self, request, slug, *args, **kwargs):
 
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
 
         if concert.user == request.user:
 
@@ -230,11 +230,13 @@ class DeleteConcert(LoginRequiredMixin, View):
                 request,
                 "delete_concert.html"
             )
+        else:
+            return redirect('403')
 
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Concert.objects
-        concert = get_object_or_404(queryset, slug=slug)
+        concert = get_object_or_404(queryset, pk=slug)
 
         concert.delete()
         return redirect('home')

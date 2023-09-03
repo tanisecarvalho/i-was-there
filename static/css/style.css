@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&family=Quicksand:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;700&family=Quicksand:wght@500;700&display=swap');
 
 body {
     background-color: #E5B8F4;
     font-family: 'Oxygen', sans-serif;
+    font-weight: 300;
 }
 
 h1, h2, h3 {
@@ -55,8 +56,50 @@ footer {
     border-bottom-left-radius: 0;
   }
   
-  .form-login input[type="password"] {
+.form-login input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-  }
+}
+
+.logo {
+    border-radius: 10px;
+}
+
+.btn-purple {
+    background-color: #2D033B;
+    color: #FFFFFF;
+}
+
+.btn-purple:hover {
+    border: 2px #2D033B solid;
+}
+
+.btn-purple-lighter {
+    background-color: #C147E9;
+    color: #FFFFFF;
+}
+
+.btn-purple-lighter:hover {
+    border: 2px #C147E9 solid;
+}
+
+a.nav-link {
+    color: #2D033B;
+    font-size: larger;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+a.nav-link:hover {
+    background-color: #C147E9;
+    color: #FFFFFF;
+}
+
+footer a {
+    color: #FFFFFF;
+}
+
+footer a:hover {
+    color: #C147E9;
+}

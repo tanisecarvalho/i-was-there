@@ -6,14 +6,14 @@
 
     <div class="row">
         <div class="col-12 mt-3 left">
-            <nav class="navbar text-bg-dark">
+            <nav class="navbar text-white">
                 <div class="container-fluid">
                   <form class="d-flex" role="search" method="GET" action="{% url 'home' %}">
                     <label for="band" class="col-sm-2 col-form-label">Band: </label>
                     <input class="form-control me-2" type="search" aria-label="Band" name="band">
                     <label for="country" class="col-sm-2 col-form-label">Country: </label>
                     <input class="form-control me-2" type="search" aria-label="Country" name="country">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-purple" type="submit">Search</button>
                   </form>
                 </div>
               </nav>
@@ -22,25 +22,29 @@
     <div class="row">
 
         <!-- Concerts -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
+        <div class="col-12 mt-3 mb-3">
+            <div class="row concert-list">
                 {% for concert in concerts %}
-                <div class="col-md-4">
-                    <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
+                <div class="col-md-3">
+                    <div class="card card-purple text-white mt-3" style="text-align: center;">
                         <div class="card-body">
                             <h4 class="card-title"><a href="{% url 'concert_detail' concert.pk %}" class="card-link">{{ concert.band }}</a></h4>
                             <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
                             <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                             <p class="card-text">{{ concert.number_of_goers }} were there</p>
-                            <a href="{% url 'add_to_my_list' concert.pk %}" ><input type="button" value="ADD TO MY LIST"></a>
-                            <a href="{% url 'edit_concert' concert.pk %}" ><input type="button" value="EDIT"></a>
-                            <a href="{% url 'delete_concert' concert.pk %}" ><input type="button" value="DELETE"></a>
+                            <p class="card-text text-muted">added by {{ concert.user }}</p>
+                            {% if concert.user == user %}
+                            <a href="{% url 'edit_concert' concert.pk %}" type="button" class="btn btn-sm btn-purple">EDIT</a>
+                            <a href="{% url 'delete_concert' concert.pk %}" type="button" class="btn btn-sm btn-purple">DELETE</a>
+                            {% else %}
+                            <a href="{% url 'add_to_my_list' concert.pk %}" type="button" class="btn btn-sm btn-purple">ADD TO MY LIST</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
             </div>
-            <div class="row">
+            <div class="row concert-list">
                 {% endif %}
                 {% endfor %}
             </div>

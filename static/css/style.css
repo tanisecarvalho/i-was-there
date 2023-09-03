@@ -103,3 +103,20 @@ footer a {
 footer a:hover {
     color: #C147E9;
 }
+
+.concert-list {
+    justify-content: space-around;
+}
+
+.page-link {
+    background-color: #C147E9;
+    color: #FFFFFF;
+}
+
+.card-purple {
+    background-color: #810CA8;
+}
+
+.card-purple a {
+    color: #FFFFFF;
+}

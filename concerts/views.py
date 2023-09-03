@@ -253,4 +253,4 @@ class DeleteConcert(LoginRequiredMixin, View):
             return redirect('my_concerts')
         else:
             concert.delete()
-            return redirect('home')
+            return redirect('my_concerts')

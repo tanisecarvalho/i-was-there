@@ -271,6 +271,7 @@ If you would like to edit your copy of this repository on Gitpod, you will need 
 - Used [RandomKeyGen](https://randomkeygen.com/) to create the SECRET_KEY for the project.
 - Used [FreeCodeCamp](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/) article to learn how to set up a virtual environment in Python.
 - Used [this](https://www.youtube.com/watch?v=KHF6nysy0-c&t=205s) YouTube tutorial to add consistent height to the gallery carousel and CSS grandients to its text. 
+- Used [GeeksForGeeks](https://www.geeksforgeeks.org/built-in-error-views-in-django/) to understand how to raise built-in errors in Django views.
 ### Acknowledgments
 - Used [Cloudinary](https://cloudinary.com/documentation/django_image_and_video_upload) documentation to help on uploading images through form.
 

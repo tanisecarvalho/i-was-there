@@ -3,6 +3,7 @@ from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Concert, Band
 from .forms import CommentForm, ConcertForm, BandForm
+from django.core.exceptions import PermissionDenied
 
 
 class ConcertList(generic.ListView):
@@ -181,6 +182,8 @@ class EditConcert(LoginRequiredMixin, View):
                     "concert_form": concert_form
                 },
             )
+        else:
+            raise PermissionDenied
 
     def post(self, request, slug, *args, **kwargs):
 
@@ -231,7 +234,7 @@ class DeleteConcert(LoginRequiredMixin, View):
                 "delete_concert.html"
             )
         else:
-            return redirect('403')
+            raise PermissionDenied
 
     def post(self, request, slug, *args, **kwargs):
 

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Concert, Band
+from django.contrib.auth.models import User
+from .models import Concert, Band, Comment
 from .forms import CommentForm, ConcertForm, BandForm
 from django.core.exceptions import PermissionDenied
 
@@ -241,5 +242,15 @@ class DeleteConcert(LoginRequiredMixin, View):
         queryset = Concert.objects
         concert = get_object_or_404(queryset, pk=slug)
 
-        concert.delete()
-        return redirect('home')
+        if (concert.number_of_goers() > 1):
+            queryUser = User.objects
+            admin = get_object_or_404(queryUser, pk=1)
+            comments = Comment.objects.filter(concert=concert, user=concert.user)
+            comments.delete()
+            concert.goers.remove(request.user)
+            concert.user = admin
+            concert.save()
+            return redirect('my_concerts')
+        else:
+            concert.delete()
+            return redirect('home')

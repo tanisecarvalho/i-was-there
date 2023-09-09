@@ -33,7 +33,7 @@ class ConcertList(generic.ListView):
                     country__icontains=country
                 )
         else:
-            concerts = self.model.objects.all()
+            concerts = self.model.objects.all().exclude(goers=self.request.user.id)
         return concerts
 
 

@@ -33,7 +33,9 @@ class ConcertList(generic.ListView):
                     country__icontains=country
                 ).exclude(goers=self.request.user.id)
         else:
-            concerts = self.model.objects.all().exclude(goers=self.request.user.id)
+            concerts = self.model.objects.all().exclude(
+                goers=self.request.user.id
+                )
         return concerts
 
 
@@ -262,7 +264,10 @@ class DeleteConcert(LoginRequiredMixin, View):
         concert = get_object_or_404(queryset, pk=slug)
 
         if concert.user != request.user:
-            comments = Comment.objects.filter(concert=concert, user=request.user)
+            comments = Comment.objects.filter(
+                concert=concert,
+                user=request.user
+                )
             comments.delete()
             concert.goers.remove(request.user)
             return redirect('my_concerts')
@@ -270,7 +275,10 @@ class DeleteConcert(LoginRequiredMixin, View):
             if (concert.number_of_goers() > 1):
                 queryUser = User.objects
                 admin = get_object_or_404(queryUser, pk=1)
-                comments = Comment.objects.filter(concert=concert, user=request.user)
+                comments = Comment.objects.filter(
+                    concert=concert,
+                    user=request.user
+                    )
                 comments.delete()
                 concert.goers.remove(request.user)
                 concert.user = admin

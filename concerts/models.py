@@ -5,7 +5,11 @@ from cloudinary.models import CloudinaryField
 
 class Band(models.Model):
     name = models.CharField(max_length=200, unique=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bands")
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="bands"
+        )
     created_on = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -16,14 +20,26 @@ class Band(models.Model):
 
 
 class Concert(models.Model):
-    band = models.ForeignKey(Band, on_delete=models.CASCADE, related_name="concerts_bands")
+    band = models.ForeignKey(
+        Band,
+        on_delete=models.CASCADE,
+        related_name="concerts_bands"
+        )
     date = models.DateField()
     country = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="concerts")
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="concerts"
+        )
     created_on = models.DateTimeField(auto_now_add=True)
     update_on = models.DateTimeField(auto_now=True)
-    goers = models.ManyToManyField(User, related_name="concert_goers", blank=True)
+    goers = models.ManyToManyField(
+        User,
+        related_name="concert_goers",
+        blank=True
+        )
 
     class Meta:
         ordering = ['-created_on']
@@ -38,8 +54,16 @@ class Concert(models.Model):
 class Comment(models.Model):
     sentence = models.TextField()
     photo = CloudinaryField('image', default='placeholder')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
-    concert = models.ForeignKey(Concert, on_delete=models.CASCADE, related_name="comments")
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="comments"
+        )
+    concert = models.ForeignKey(
+        Concert,
+        on_delete=models.CASCADE,
+        related_name="comments"
+        )
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

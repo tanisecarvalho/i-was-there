@@ -2,13 +2,13 @@
 
 {% block content %}
 
-    <h1>CONCERTS</h1>
+    <h1>MY CONCERTS</h1>
 
     <div class="row">
         <div class="col-12 mt-3 left">
             <nav class="navbar text-white">
                 <div class="container-fluid">
-                  <form class="d-flex" role="search" method="GET" action="{% url 'concerts' %}">
+                  <form class="d-flex" role="search" method="GET" action="{% url 'my_concerts' %}">
                     <label for="band" class="col-sm-2 col-form-label">Band: </label>
                     <input class="form-control me-2" type="search" aria-label="Band" name="band">
                     <label for="country" class="col-sm-2 col-form-label">Country: </label>
@@ -29,7 +29,7 @@
                     <p class="text-center">No concerts were found.</p>
                 </div>
             </div>
-            {% else %}  
+            {% else %} 
                 {% for concert in concerts %}
                 <div class="col-md-3">
                     <div class="card card-purple text-white mt-3" style="text-align: center;">
@@ -39,7 +39,10 @@
                             <p class="card-text">{{ concert.city }}, {{ concert.country }}</p>
                             <p class="card-text">{{ concert.number_of_goers }} were there</p>
                             <p class="card-text text-muted">added by {{ concert.user }}</p>
-                            <a href="{% url 'add_to_my_list' concert.pk %}" type="button" class="btn btn-sm btn-purple">ADD TO MY LIST</a>
+                            {% if concert.user == user %}
+                            <a href="{% url 'edit_concert' concert.pk %}" type="button" class="btn btn-sm btn-purple">EDIT</a>
+                            {% endif %}
+                            <a href="{% url 'delete_concert' concert.pk %}" type="button" class="btn btn-sm btn-purple">DELETE</a>
                         </div>
                     </div>
                 </div>

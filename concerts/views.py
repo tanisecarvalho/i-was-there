@@ -22,16 +22,16 @@ class ConcertList(generic.ListView):
             concerts = concerts = self.model.objects.filter(
                     band__in=Band.objects.filter(name__icontains=band),
                     country__icontains=country
-                )
+                ).exclude(goers=self.request.user.id)
         elif band or country:
             if band:
                 concerts = self.model.objects.filter(
                     band__in=Band.objects.filter(name__icontains=band)
-                )
+                ).exclude(goers=self.request.user.id)
             if country:
                 concerts = self.model.objects.filter(
                     country__icontains=country
-                )
+                ).exclude(goers=self.request.user.id)
         else:
             concerts = self.model.objects.all().exclude(goers=self.request.user.id)
         return concerts
@@ -152,16 +152,37 @@ class AddConcert(LoginRequiredMixin, View):
             )
 
 
-class MyConcertList(LoginRequiredMixin, View):
-    def get(self, request, *args, **kwargs):
-        concerts = Concert.objects.filter(goers=self.request.user.id)
-        return render(
-            request,
-            "concerts.html",
-            {
-                "concerts": concerts
-            },
-        )
+class MyConcertList(generic.ListView):
+    model = Concert
+    queryset = Concert.objects.order_by('-created_on')
+    template_name = 'my_concerts.html'
+    paginate_by = 6
+    context_object_name = "concerts"
+
+    def get_queryset(self, **kwargs):
+        band = self.request.GET.get('band')
+        country = self.request.GET.get('country')
+
+        if band and country:
+            concerts = concerts = self.model.objects.filter(
+                    band__in=Band.objects.filter(name__icontains=band),
+                    country__icontains=country,
+                    goers=self.request.user.id
+                )
+        elif band or country:
+            if band:
+                concerts = self.model.objects.filter(
+                    band__in=Band.objects.filter(name__icontains=band),
+                    goers=self.request.user.id
+                )
+            if country:
+                concerts = self.model.objects.filter(
+                    country__icontains=country,
+                    goers=self.request.user.id
+                )
+        else:
+            concerts = self.model.objects.filter(goers=self.request.user.id)
+        return concerts
 
 
 class EditConcert(LoginRequiredMixin, View):

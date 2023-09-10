@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 
 
 class Band(models.Model):
+    """ Model to save the Bands info """
     name = models.CharField(max_length=200, unique=True)
     user = models.ForeignKey(
         User,
@@ -20,6 +21,7 @@ class Band(models.Model):
 
 
 class Concert(models.Model):
+    """ Model to save the Concert info """
     band = models.ForeignKey(
         Band,
         on_delete=models.CASCADE,
@@ -52,6 +54,7 @@ class Concert(models.Model):
 
 
 class Comment(models.Model):
+    """ Model to save the Comment info """
     sentence = models.TextField()
     photo = CloudinaryField('image', default='placeholder')
     user = models.ForeignKey(

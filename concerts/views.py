@@ -8,6 +8,7 @@ from django.core.exceptions import PermissionDenied
 
 
 class ConcertList(generic.ListView):
+    """ View to list all the new concerts """
     model = Concert
     queryset = Concert.objects.order_by('-created_on')
     template_name = 'concerts.html'
@@ -40,6 +41,7 @@ class ConcertList(generic.ListView):
 
 
 class ConcertDetail(LoginRequiredMixin, View):
+    """ View to show details about a concert """
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
@@ -62,6 +64,7 @@ class ConcertDetail(LoginRequiredMixin, View):
 
 
 class AddToMyList(LoginRequiredMixin, View):
+    """ View to add a concert to the user list """
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Concert.objects
@@ -95,6 +98,7 @@ class AddToMyList(LoginRequiredMixin, View):
 
 
 class AddConcert(LoginRequiredMixin, View):
+    """ View to create a new concert """
 
     def get(self, request, *args, **kwargs):
 
@@ -155,6 +159,7 @@ class AddConcert(LoginRequiredMixin, View):
 
 
 class MyConcertList(generic.ListView):
+    """ View to show the list of concerts the user has added to themselves """
     model = Concert
     queryset = Concert.objects.order_by('-created_on')
     template_name = 'my_concerts.html'
@@ -188,6 +193,7 @@ class MyConcertList(generic.ListView):
 
 
 class EditConcert(LoginRequiredMixin, View):
+    """ View to edit the details about a concert """
 
     def get(self, request, slug, *args, **kwargs):
 
@@ -246,6 +252,7 @@ class EditConcert(LoginRequiredMixin, View):
 
 
 class DeleteConcert(LoginRequiredMixin, View):
+    """ View to delete a concert """
     def get(self, request, slug, *args, **kwargs):
 
         try:

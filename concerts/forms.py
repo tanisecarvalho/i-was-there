@@ -3,12 +3,14 @@ from django import forms
 
 
 class CommentForm(forms.ModelForm):
+    """ Form for the Comment model """
     class Meta:
         model = Comment
         fields = ('sentence', 'photo',)
 
 
 class ConcertForm(forms.ModelForm):
+    """ Form for the Concert model """
     class Meta:
         model = Concert
         fields = ('date', 'country', 'city', )
@@ -16,6 +18,7 @@ class ConcertForm(forms.ModelForm):
 
 
 class BandForm(forms.ModelForm):
+    """ Form for the Band model """
     class Meta:
         model = Band
         fields = ('name', )

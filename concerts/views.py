@@ -7,7 +7,7 @@ from .forms import CommentForm, ConcertForm, BandForm
 from django.core.exceptions import PermissionDenied
 
 
-class ConcertList(generic.ListView):
+class ConcertList(LoginRequiredMixin, generic.ListView):
     """ View to list all the new concerts """
     model = Concert
     queryset = Concert.objects.order_by('-created_on')
@@ -158,7 +158,7 @@ class AddConcert(LoginRequiredMixin, View):
             )
 
 
-class MyConcertList(generic.ListView):
+class MyConcertList(LoginRequiredMixin, generic.ListView):
     """ View to show the list of concerts the user has added to themselves """
     model = Concert
     queryset = Concert.objects.order_by('-created_on')

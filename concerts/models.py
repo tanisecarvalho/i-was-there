@@ -24,7 +24,6 @@ class Concert(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     update_on = models.DateTimeField(auto_now=True)
     goers = models.ManyToManyField(User, related_name="concert_goers", blank=True)
-    slug = models.SlugField(max_length=200, unique=True)
 
     class Meta:
         ordering = ['-created_on']

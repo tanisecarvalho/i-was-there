@@ -14,9 +14,8 @@ class CommentAdmin(SummernoteModelAdmin):
 @admin.register(Concert)
 class ConcertAdmin(SummernoteModelAdmin):
 
-    list_display = ('band', 'date', 'user', 'slug')
+    list_display = ('band', 'date', 'user')
     search_fields = ['country', 'city', 'date']
-    prepopulated_fields = {'slug': ('date', 'country', 'band', )}
 
 
 @admin.register(Band)

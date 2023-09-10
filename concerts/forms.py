@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
 class ConcertForm(forms.ModelForm):
     class Meta:
         model = Concert
-        fields = ('date', 'country', 'city', 'slug', )
+        fields = ('date', 'country', 'city', )
         widgets = {'date': forms.TextInput(attrs={'type': 'date'})}
 
 

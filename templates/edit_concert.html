@@ -6,14 +6,16 @@
     
     <div class="row">
         <div class="col view-concert  mt-3 ">
-            <div class="card text-bg-dark">
+            <div class="card card-purple text-white">
                 <div class="card-body">
 
                     <form method="post" style="margin-top: 1.3em;" enctype="multipart/form-data">
                         {{ band_form | crispy }}
                         {{ concert_form | crispy }}
                         {% csrf_token %}
-                        <button class="btn btn-signup btn-lg" type="submit">Submit</button>
+                        <br>
+                        <a href="{% url 'my_concerts' %}" type="button" class="btn btn-purple">Cancel</a>
+                        <button class="btn btn-purple-lighter" type="submit">Submit</button>
                     </form>
 
                 </div>

@@ -19,10 +19,10 @@ class ConcertList(generic.ListView):
         country = self.request.GET.get('country')
 
         if band and country:
-            concerts = concerts = self.model.objects.filter(
-                    band__in=Band.objects.filter(name__icontains=band),
-                    country__icontains=country
-                ).exclude(goers=self.request.user.id)
+            concerts = self.model.objects.filter(
+                band__in=Band.objects.filter(name__icontains=band),
+                country__icontains=country
+            ).exclude(goers=self.request.user.id)
         elif band or country:
             if band:
                 concerts = self.model.objects.filter(
@@ -164,11 +164,11 @@ class MyConcertList(generic.ListView):
         country = self.request.GET.get('country')
 
         if band and country:
-            concerts = concerts = self.model.objects.filter(
-                    band__in=Band.objects.filter(name__icontains=band),
-                    country__icontains=country,
-                    goers=self.request.user.id
-                )
+            concerts = self.model.objects.filter(
+                band__in=Band.objects.filter(name__icontains=band),
+                country__icontains=country,
+                goers=self.request.user.id
+            )
         elif band or country:
             if band:
                 concerts = self.model.objects.filter(
@@ -246,32 +246,36 @@ class EditConcert(LoginRequiredMixin, View):
 class DeleteConcert(LoginRequiredMixin, View):
     def get(self, request, slug, *args, **kwargs):
 
-        queryset = Concert.objects
-        concert = get_object_or_404(queryset, pk=slug)
-
-        if concert.user == request.user:
-
-            return render(
-                request,
-                "delete_concert.html"
-            )
-        else:
+        try:
+            Concert.objects.get(pk=slug, goers=request.user)
+        except Concert.DoesNotExist:
             raise PermissionDenied
+
+        return render(
+            request,
+            "delete_concert.html"
+        )
 
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Concert.objects
         concert = get_object_or_404(queryset, pk=slug)
 
-        if (concert.number_of_goers() > 1):
-            queryUser = User.objects
-            admin = get_object_or_404(queryUser, pk=1)
-            comments = Comment.objects.filter(concert=concert, user=concert.user)
+        if concert.user != request.user:
+            comments = Comment.objects.filter(concert=concert, user=request.user)
             comments.delete()
             concert.goers.remove(request.user)
-            concert.user = admin
-            concert.save()
             return redirect('my_concerts')
         else:
-            concert.delete()
-            return redirect('my_concerts')
+            if (concert.number_of_goers() > 1):
+                queryUser = User.objects
+                admin = get_object_or_404(queryUser, pk=1)
+                comments = Comment.objects.filter(concert=concert, user=request.user)
+                comments.delete()
+                concert.goers.remove(request.user)
+                concert.user = admin
+                concert.save()
+                return redirect('my_concerts')
+            else:
+                concert.delete()
+                return redirect('my_concerts')

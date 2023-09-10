@@ -5,16 +5,18 @@
     <h1>DELETE CONCERT</h1>
 
     <div class="row">
-        <div class="col-12 mt-3 left">
-            <nav class="navbar text-bg-dark">
-                <div class="container-fluid">
-                    <form class="d-flex" method="post">
+        <div class="col view-concert mt-3">
+            <div class="card card-purple text-white mt-3" style="text-align: center;">
+                <div class="card-body">
+                    <form method="post">
                         {% csrf_token %}
-                        <h2>Are you sure you want to delete the concert?</h2>
-                        <button class="btn btn-outline-success" type="submit">Confirm</button>
+                        <h4 class="card-title">Are you sure you want to delete the concert?</h4>
+                        <a href="{% url 'my_concerts' %}" type="button" class="btn btn-purple">Cancel</a>
+                        <button class="btn btn-purple-lighter" type="submit">Confirm</button>
                     </form>
                 </div>
-              </nav>
+            </div>
         </div>
     </div>
+    
 {%endblock%}

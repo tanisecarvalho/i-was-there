@@ -14,7 +14,8 @@
                         {{ concert_form | crispy }}
                         {{ comment_form | crispy }}
                         {% csrf_token %}
-                        <button class="btn btn-purple-lighter btn-lg px-4 mt-3" type="submit">Submit</button>
+                        <a href="{% url 'my_concerts' %}" type="button" class="btn btn-purple px-4 mt-3">Cancel</a>
+                        <button class="btn btn-purple-lighter px-4 mt-3" type="submit">Submit</button>
                     </form>
 
                 </div>

@@ -2,7 +2,7 @@
 
 ### Deployed Site: [I Was There](https://i-was-there-d5ba14a8429f.herokuapp.com/)
 
-![Preview](placement for preview image)
+![Preview](docs/main.JPG)
 
 I Was There is a concert tracking for those concerts' aficionados who would like to keep track of the gigs they went to.
 
@@ -56,7 +56,24 @@ The users will be able to see the list of concerts they have attended, created, 
 
 ### User Stories
 
-
+- As a first time visitor I can see the website home page so that I can understand what this website is about
+- As a Site User I can create a concert so that I can add it to my list and share it with other users
+- As a Site User I can add a concert created by other user so that I have it on my list
+- As a Site User I can edit a concert that I created so that I can change misinformation.
+- As a Site User I can delete a concert so that I can remove it from my list
+- As a site user I can view a concert so that I can check all the comments and gallery
+- As a Site User I can suggest a change on a concert to the admin so that the concert will have the correct information
+- As a Site User I can see all concerts created on the site so that I can add the ones I went to my list
+- As a Site User I can create an account so that I can have access to the concerts and add my owns
+- As a Site User I can login to my account so that I can have full access to my information
+- As a Site User I can log out of my account so that I can keep my account disconnected while not using it.
+- As a Site User I can view my profile so that I have access to an overview of concerts I have attended
+- As a Site User I can delete my account so that I can stop using the website
+- As a Site User I can update my profile so that I can upload new information to it.
+- As a Site Admin I can add a concert so that users can see it
+- As a Site Admin I can see users suggestions so I can edit concerts in case the suggestion is valid
+- As a Site Admin I can delete concerts so that I can eliminate duplication and wrong information
+- As a Site Admin I can delete users so that I can mantain a safe environment for the users
 ___
 
 ## Design

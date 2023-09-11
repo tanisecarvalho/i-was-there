@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col view-concert mt-3">
-            <div class="card text-bg-dark" style="width: 18rem; text-align: center;">
+            <div class="card card-purple text-white" style="width: 18rem; text-align: center;">
                 <div class="card-body">
                     <h4 class="card-title">{{ concert.band }}</h4>
                     <h5 class="card-subtitle mb-2 text-muted">{{ concert.date }}</h5>
@@ -24,27 +24,16 @@
     
     <div class="row">
         <div class="col view-concert  mt-3 ">
-            <div class="card text-bg-dark">
+            <div class="card card-purple text-white mb-3">
                 <div class="card-body">
-                    <!-- For later -->
-                    <!-- {% if commented %} -->
-                    <div class="alert alert-success" role="alert">
-                        Your comment is awaiting approval
-                    </div>
-                    <!-- {% else %} -->
-                    <!-- {% if user.is_authenticated %} -->
-
                     <h3>Leave a comment:</h3>
                     <p>Posting as: {{ user.username }}</p>
                     <form method="post" style="margin-top: 1.3em;" enctype="multipart/form-data">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
-                        <button class="btn btn-signup btn-lg" type="submit">Submit</button>
+                        <a href="{% url 'concerts' %}" type="button" class="btn btn-purple px-4 mt-3">Cancel</a>
+                        <button class="btn btn-purple-lighter px-4 mt-3" type="submit">Submit</button>
                     </form>
-                    
-                    <!-- {% endif %} -->
-                    <!-- {% endif %} -->
-
                 </div>
             </div>
         </div>

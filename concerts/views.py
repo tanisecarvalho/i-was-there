@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Concert, Band, Comment
 from .forms import CommentForm, ConcertForm, BandForm
@@ -91,6 +92,10 @@ class AddToMyList(LoginRequiredMixin, View):
             comment.concert = concert
             comment.save()
             concert.goers.add(request.user)
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Concert added to your list.')
         else:
             comment_form = CommentForm()
 

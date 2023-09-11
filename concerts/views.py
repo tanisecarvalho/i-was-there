@@ -145,6 +145,10 @@ class AddConcert(LoginRequiredMixin, View):
                 comment.concert = concert
                 comment.save()
                 concert.goers.add(request.user)
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    'Concert created and added to your list.')
 
                 return redirect("concert_detail", slug=concert.pk)
         else:
@@ -241,6 +245,11 @@ class EditConcert(LoginRequiredMixin, View):
             concert_form.instance.band = band
             concert_form.save()
 
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Concert was edited successfully.')
+
             return redirect("concert_detail", slug=concert.pk)
         else:
             band_form = BandForm(instance=concert.band)
@@ -282,6 +291,10 @@ class DeleteConcert(LoginRequiredMixin, View):
                 )
             comments.delete()
             concert.goers.remove(request.user)
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'Concert was removed from your list.')
             return redirect('my_concerts')
         else:
             if (concert.number_of_goers() > 1):
@@ -295,7 +308,15 @@ class DeleteConcert(LoginRequiredMixin, View):
                 concert.goers.remove(request.user)
                 concert.user = admin
                 concert.save()
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    'Concert transfered to admin and removed from your list.')
                 return redirect('my_concerts')
             else:
                 concert.delete()
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    'Concert was deleted successfully.')
                 return redirect('my_concerts')

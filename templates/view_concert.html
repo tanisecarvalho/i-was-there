@@ -80,5 +80,12 @@
           </div>
         </div>
     {% endif %}
+
+    <div class="row mt-3 mb-3">
+        <div class="col text-center">
+            <a href="{% url 'concerts' %}" type="button" class="btn btn-purple px-4 mt-3">Go to Concerts</a>
+            <a href="{% url 'my_concerts' %}" type="button" class="btn btn-purple px-4 mt-3">Go to My Concerts</a>
+        </div>
+    </div>
         
 {% endblock content %}

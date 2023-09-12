@@ -34,7 +34,6 @@ The users will be able to see the list of concerts they have attended, created, 
 
 * [Technologies Used](#technologies-used)
   * [Languages Used](#languages-used)
-  * [Python Modules](#python-modules)
   * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
 
 * [Testing](#testing)
@@ -54,6 +53,10 @@ The users will be able to see the list of concerts they have attended, created, 
 
 ## User Experience (UX)
 
+### Project Goals
+
+The goal of this project is to provide users who love going concerts to keep track of the concerts they have attended and share their experiences and pictures.
+
 ### User Stories
 
 - As a first time visitor I can see the website home page so that I can understand what this website is about
@@ -62,18 +65,22 @@ The users will be able to see the list of concerts they have attended, created, 
 - As a Site User I can edit a concert that I created so that I can change misinformation.
 - As a Site User I can delete a concert so that I can remove it from my list
 - As a site user I can view a concert so that I can check all the comments and gallery
-- As a Site User I can suggest a change on a concert to the admin so that the concert will have the correct information
 - As a Site User I can see all concerts created on the site so that I can add the ones I went to my list
 - As a Site User I can create an account so that I can have access to the concerts and add my owns
 - As a Site User I can login to my account so that I can have full access to my information
 - As a Site User I can log out of my account so that I can keep my account disconnected while not using it.
-- As a Site User I can view my profile so that I have access to an overview of concerts I have attended
-- As a Site User I can delete my account so that I can stop using the website
-- As a Site User I can update my profile so that I can upload new information to it.
 - As a Site Admin I can add a concert so that users can see it
 - As a Site Admin I can see users suggestions so I can edit concerts in case the suggestion is valid
 - As a Site Admin I can delete concerts so that I can eliminate duplication and wrong information
 - As a Site Admin I can delete users so that I can mantain a safe environment for the users
+
+### Future Developement
+
+- As a Site User I can view my profile so that I have access to an overview of concerts I have attended
+- As a Site User I can delete my account so that I can stop using the website
+- As a Site User I can update my profile so that I can upload new information to it.
+- As a Site User I can suggest a change on a concert to the admin so that the concert will have the correct information.
+
 ___
 
 ## Design
@@ -217,6 +224,9 @@ The flow chart was created using [Draw.io](https://draw.io/).
 </details>
 
 ### Database Schema
+- The user model was created with Django-Allauth.
+
+![Database ERD](docs/ERD.JPG)
 
 ---
 
@@ -228,6 +238,81 @@ Please check the [AGILE.md](AGILE.md) file to see all the Agile Development Proc
 
 ## Features
 
+- Favicon: logo on all the pages
+
+  ![Favicon](docs/features/favicon.JPG)
+
+- Navbar
+
+  ![Navbar](docs/features/navbar.JPG)
+
+- Navbar - logged user
+
+  ![Navbar](docs/features/navbar-logged.JPG)
+
+- Footer
+
+  ![Navbar](docs/features/footer.JPG)
+
+- Messages
+
+  ![Messages](docs/features/message.JPG)
+
+- Home Page
+
+  ![Home Page](docs/features/home.JPG)
+
+- Register
+
+  ![Register](docs/features/register.JPG)
+
+- Login
+
+  ![Login](docs/features/login.JPG)
+
+- Logout
+
+  ![Logout](docs/features/logout.JPG)
+
+- Home - Concerts
+
+  ![Concerts](docs/features/concerts.JPG)
+
+- My Concerts
+
+  ![My Concerts](docs/features/my-concerts.JPG)
+
+- Pagination on My Concerts and Concerts pages
+
+  ![Pagination](docs/features/pagination-full-page.JPG)
+
+- Add Concert
+
+  ![Add Concert](docs/features/new-concert.JPG)
+
+- Edit Concert
+
+  ![Edit Concert](docs/features/edit-concert.JPG)
+
+- Add To My List
+
+  ![Add To My List](docs/features/add-to-my-list.JPG)
+
+- Delete Concert
+
+  ![Delete Concert](docs/features/delete-concert.JPG)
+
+- View Concert
+
+  ![View Concert](docs/features/view-concert.JPG)
+
+- View Concert - Gallery
+
+  ![View Concert](docs/features/view-concert-gallery.JPG)
+
+- View Concert - Buttons
+
+  ![View Concert](docs/features/view-concert-buttons.JPG)
 
 ---
 
@@ -235,9 +320,58 @@ Please check the [AGILE.md](AGILE.md) file to see all the Agile Development Proc
 
 ### Languages Used
 
-### Python Modules
+  - HTML5
+  - CSS3
+  - JavaScript
+  - Python
 
 ### Frameworks, Libraries & Programs Used
+
+This project used:
+
+* [Balsamiq](https://balsamiq.com/) to create the wireframes.
+
+* [Git](https://git-scm.com/) for version control.
+
+* [GitHub](https://github.com/) to store the project files.
+
+* [VS Code](https://code.visualstudio.com/) as the IDE for development.
+
+* [Django](https://www.djangoproject.com/) as the Python Framework.
+
+* [Draw.io](https://draw.io/) to create the flow chart.
+
+* [Heroku](https://www.heroku.com/home/) to deploy the website.
+
+* [ElephantSQL](https://www.elephantsql.com/) to host the database.
+
+* [Cloudinary](https://cloudinary.com/) to host images.
+
+* [Django-allauth](https://django-allauth.readthedocs.io/en/latest/) to create accounts.
+
+* [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to create the forms based on the models.
+
+* [Gunicorn](https://gunicorn.org/) as the webserver to host Django on Heroku.
+
+* [dj-database-url](https://pypi.org/project/dj-database-url/) to create DATABASE_URL to configure the Django application.
+
+* [psycopg2](https://pypi.org/project/psycopg2/) as PostgreSQL adapter.
+
+* [Whitenoise](https://whitenoise.readthedocs.io/en/latest/index.html) to host static files.
+
+* [Tables Generator](https://www.tablesgenerator.com/markdown_tables) to create tables for TESTING.md
+
+* [RandomKeyGen](https://randomkeygen.com/) to create the SECRET_KEY for the project.
+
+* [Favicon](https://favicon.io/) to transform the logo into a favicon.
+
+* [Canva](https://www.canva.com/) to create the logo.
+
+* [Google Fonts](https://fonts.google.com/) to import the fonts used on the website.
+
+* [Bootstrap](https://getbootstrap.com/) for layout.
+
+* [Color Hunt](https://colorhunt.co/) to select the colour scheme.
 
 ---
 
@@ -250,6 +384,24 @@ Please check the [TESTING.md](TESTING.md) file for all the tests.
 ## Deployment & Local Development
 
 ### Remote Deployment
+
+Before deploying, run 'pip3 freeze > requirements.txt' on the terminal of your IDE of choice.
+
+The site was deployed to Heroku. The steps to deploy are as follows: 
+  1. Create an account and log in your [Heroku](https://id.heroku.com/login) account. 
+  2. On the dashboard, click on the button New -> Create new app on the right side of the page.
+  3. Choose a name and select your region. Click on Create app.
+  4. Go to the Settings tab. Scroll down to Config Vars. 
+  - Add key PORT and value 8000.
+  - Add key DATABASE_URL and add the value of your database on ElephantSQL or other host of choice.
+  - Add key CLOUDINARY_URL and add the value of your cloudinary host link.
+  - Add key SECRET_KEY and add the value of your choice for this secret key.
+  - Add key DISABLE_COLLECTSTATIC and add the value of 1. (Don't forget to remove this key before the final deployment.)
+  5. Go to the Deploy tab. Select GitHub as Deployment Method. Connect your account.
+  6. Enter the name of the repository that you forked, search and connect.
+  7. Select the branch and click Deploy Branch.
+
+The live link can be found here - [I Was There](https://i-was-there-d5ba14a8429f.herokuapp.com/)
 
 ### Local Development
 
@@ -285,12 +437,18 @@ If you would like to edit your copy of this repository on Gitpod, you will need 
 
 ### Code Used
 
-- Used [RandomKeyGen](https://randomkeygen.com/) to create the SECRET_KEY for the project.
 - Used [FreeCodeCamp](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/) article to learn how to set up a virtual environment in Python.
 - Used [this](https://www.youtube.com/watch?v=KHF6nysy0-c&t=205s) YouTube tutorial to add consistent height to the gallery carousel and CSS grandients to its text. 
 - Used [GeeksForGeeks](https://www.geeksforgeeks.org/built-in-error-views-in-django/) to understand how to raise built-in errors in Django views.
-### Acknowledgments
 - Used [Cloudinary](https://cloudinary.com/documentation/django_image_and_video_upload) documentation to help on uploading images through form.
+- Used [this Django tutorial](https://www.youtube.com/playlist?list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) on youtube to guide help me on my doubts.
 
+### Acknowledgments
+
+I would like to thank my mentor David Bowers who became my mentor just a few days before this project started and has supported it from the start. 
+
+To my partner, friends and family who have supported me during all this journey.
+
+To the women on my co-hort and our facilitator Laura who have been supportive of this new phase of my career and keep cheering and giving words of support on the meetings I can show up.
 
 [Back to Top](<#i-was-there>)
